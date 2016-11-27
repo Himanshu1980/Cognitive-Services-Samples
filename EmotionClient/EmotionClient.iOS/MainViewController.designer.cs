@@ -7,11 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace EmotionClient.iOS
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("MainViewController")]
+    partial class MainViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -19,24 +20,22 @@ namespace EmotionClient.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton TakePhotoButton { get; set; }
+        UIKit.UIButton TakePhoto { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView ThePhoto { get; set; }
 
-        [Action ("TakePhotoButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void TakePhotoButton_TouchUpInside (UIKit.UIButton sender) void ReleaseDesignerOutlets ()
+        void ReleaseDesignerOutlets ()
         {
             if (DetailsText != null) {
                 DetailsText.Dispose ();
                 DetailsText = null;
             }
 
-            if (TakePhotoButton != null) {
-                TakePhotoButton.Dispose ();
-                TakePhotoButton = null;
+            if (TakePhoto != null) {
+                TakePhoto.Dispose ();
+                TakePhoto = null;
             }
 
             if (ThePhoto != null) {

@@ -1,38 +1,33 @@
 ﻿using EmotionClient.Shared;
+using Foundation;
 using System;
-
 using UIKit;
 
 namespace EmotionClient.iOS
 {
-    public partial class ViewController : UIViewController
+    public partial class MainViewController : UIViewController
     {
-        public ViewController(IntPtr handle) : base(handle)
+        public MainViewController (IntPtr handle) : base (handle)
         {
+           
         }
 
-        public override void ViewDidLoad()
+        public override void ViewDidAppear(bool animated)
         {
-            base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
+            base.ViewDidAppear(animated);
+            TakePhoto.TouchUpInside += TakePhotoButton_TouchUpInside;
         }
 
-        public override void DidReceiveMemoryWarning()
+        private void TakePhotoButton_TouchUpInside(object sender, EventArgs e)
         {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
-        }
-
-        partial void TakePhotoButton_TouchUpInside(UIButton sender)
-        {
-            TakePhotoButton.Enabled = false;
+            TakePhoto.Enabled = false;
             UIImagePickerController picker = new UIImagePickerController();
             picker.SourceType = UIImagePickerControllerSourceType.Camera;
-            picker.FinishedPickingMedia += async (o, e) => {
-                ThePhoto.Image = e.OriginalImage;
+            picker.FinishedPickingMedia += async (o, ev) => {
+                ThePhoto.Image = ev.OriginalImage;
                 DetailsText.Text = "Processing...";
                 ((UIImagePickerController)o).DismissViewController(true, null);
-                using (var stream = e.OriginalImage.AsJPEG(.5f).AsStream())
+                using (var stream = ev.OriginalImage.AsJPEG(.5f).AsStream())
                 {
                     try
                     {
@@ -43,7 +38,7 @@ namespace EmotionClient.iOS
                     {
                         DetailsText.Text = ex.Message;
                     }
-                    TakePhotoButton.Enabled = true;
+                    TakePhoto.Enabled = true;
                 }
             };
             PresentModalViewController(picker, true);
