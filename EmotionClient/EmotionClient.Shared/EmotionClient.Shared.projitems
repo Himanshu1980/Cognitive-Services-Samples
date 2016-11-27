@@ -9,5 +9,6 @@
     <Import_RootNamespace>EmotionClient.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Core.cs" />
   </ItemGroup>
 </Project>

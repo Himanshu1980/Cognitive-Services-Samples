@@ -11,6 +11,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EmotionClient.Shared", "Emo
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		EmotionClient.Shared\EmotionClient.Shared.projitems*{3c60cb8c-61b8-4fe0-8e5e-6a37ad3b63d4}*SharedItemsImports = 4
+		EmotionClient.Shared\EmotionClient.Shared.projitems*{911a14f5-dc3d-4059-a87c-c8500105df44}*SharedItemsImports = 4
 		EmotionClient.Shared\EmotionClient.Shared.projitems*{da74c1bb-2fcf-4bab-ae15-e5501b27ac24}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
